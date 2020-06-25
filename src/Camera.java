@@ -27,7 +27,7 @@ public class Camera implements Observer{
 
     @Override
     public void update(){
-        boolean sensorStatus = Boolean.valueOf(observable.getState());
+        boolean sensorStatus = observable.getState();
         if (sensorStatus){
             turnOnCamera();
         }

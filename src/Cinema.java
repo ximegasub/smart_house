@@ -1,15 +1,15 @@
-public class Movement extends Observable {
-    private boolean moveDetected;
+public class Cinema extends Observable {
+    private boolean cinemaActive;
     private String units;
 
-    public Movement(){
-        this.moveDetected = false;
+    public Cinema(){
+        this.cinemaActive = false;
         this.units = null;
     }
 
     @Override
     public boolean getState(){
-        return this.moveDetected;
+        return this.cinemaActive;
     }
 
     @Override
@@ -36,9 +36,10 @@ public class Movement extends Observable {
 
     @Override
     public void setState(String state){
-        this.moveDetected = this.establishState(state);
-        System.out.println("Movement sensor state changes to " + this.moveDetected);
+        this.cinemaActive = this.establishState(state);
+        System.out.println("Cinema sensor state changes to " + this.cinemaActive);
         this.notifyObservers();
     }
 
 }
+

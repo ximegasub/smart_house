@@ -4,7 +4,7 @@ public abstract class Observable {
     private ArrayList<Observer> observers = new ArrayList();
 
     abstract void setState(String state);
-    abstract String getState();
+    abstract boolean getState();
     abstract void setUnits(String units);
     abstract String getUnits();
 

@@ -1,0 +1,53 @@
+[
+  {
+    "sensor": {
+      "name": "Movement",
+      "state": "on",
+      "units": "",
+      "place": "bedroom",
+      "devices": [{
+        "name": "Light",
+        "deactivate": "false"
+        },
+        {
+          "name": "Camera",
+          "deactivate": "false"
+        }
+      ]
+    }
+  },
+  {
+    "sensor": {
+      "name": "Temperature",
+      "state": "120",
+      "units": "celsius",
+      "place": "kitchen",
+      "devices": [{
+          "name": "AirConditioning",
+          "deactivate": "false"
+        },
+        {
+          "name": "Window",
+          "deactivate": "false"
+        }
+      ]
+    }
+  },
+  {
+    "sensor": {
+      "name": "Cinema",
+      "state": "on",
+      "units": "",
+      "place": "living room",
+      "devices": [{
+          "name": "Television",
+          "deactivate": "false"
+        },
+        {
+          "name": "Window",
+          "deactivate": "false"
+        }
+      ]
+    }
+  }
+]

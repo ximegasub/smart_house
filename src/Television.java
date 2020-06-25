@@ -1,21 +1,21 @@
-public class Light implements Observer{
-    private boolean lightOn;
+public class Television implements Observer{
+    private boolean tvOn;
     private String place;
     private Observable observable;
 
-    public Light(){
-        this.lightOn = false;
+    public Television(){
+        this.tvOn = false;
     }
 
-    public Light(Observable observable, String name){
+    public Television(Observable observable, String name){
         this.place = name;
-        this.lightOn = false;
+        this.tvOn = false;
         this.observable = observable;
         observable.activate(this);
     }
 
     @Override
-    public void definePlace(String name) {
+    public void definePlace(String place) {
         this.place = place;
     }
 
@@ -29,32 +29,33 @@ public class Light implements Observer{
     public void update(){
         boolean sensorStatus = observable.getState();
         if (sensorStatus){
-            turnOnLight();
+            turnOnTv();
         }
         else{
-            turnOffLight();
+            turnOffTv();
         }
     }
 
     public boolean getLightOn(){
-        return this.lightOn;
+        return this.tvOn;
     }
 
     public String getPlace(){
         return this.place;
     }
 
-    public void turnOnLight(){
-        if(!lightOn){
-            System.out.println("Turning on lights from the "+ this.place);
-            lightOn = true;
+    public void turnOnTv(){
+        if(!tvOn){
+            System.out.println("Turning on television from the "+ this.place);
+            tvOn = true;
         }
     }
 
-    public void turnOffLight(){
-        if(!lightOn){
-            System.out.println("Turning off lights from the "+ this.place);
-            lightOn = false;
+    public void turnOffTv(){
+        if(!tvOn){
+            System.out.println("Turning off television from the "+ this.place);
+            tvOn = false;
         }
     }
 }
+
