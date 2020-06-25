@@ -7,15 +7,15 @@ public class Light implements Observer{
         this.lightOn = false;
     }
 
-    public Light(Observable observable, String name){
-        this.place = name;
+    public Light(Observable observable, String place){
+        this.place = place;
         this.lightOn = false;
         this.observable = observable;
         observable.activate(this);
     }
 
     @Override
-    public void definePlace(String name) {
+    public void definePlace(String place) {
         this.place = place;
     }
 

@@ -7,8 +7,8 @@ public class Window implements Observer{
         this.isOpen = false;
     }
 
-    public Window(Observable observable, String name){
-        this.place = name;
+    public Window(Observable observable, String place){
+        this.place = place;
         this.isOpen = false;
         this.observable = observable;
         observable.activate(this);
@@ -25,9 +25,21 @@ public class Window implements Observer{
         observable.activate(this);
     }
 
+    public boolean verify_state(Observable observable){
+        if (observable instanceof Cinema){
+            boolean state = observable.getState();
+            if (state){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        return observable.getState();
+    }
+
     @Override
     public void update(){
-        boolean sensorStatus = observable.getState();
+        boolean sensorStatus = this.verify_state(observable);
         if (sensorStatus){
             openWindow();
         }

@@ -32,16 +32,19 @@ public class Temperature extends Observable {
         try {
             int sensorSignal = Integer.parseInt(signal);
             int temperature = sensorSignal;
-            if ("fahrenheit".equals(this.units)) {
-                temperature = this.conversionToC(sensorSignal);
-            }
-            if (temperature <= 0 && temperature <= 20) {
-                actualState = false;
-            } else if (temperature > 20) {
-                actualState = true;
+            String units = this.units;
+            if ("celsius".equals(units) || "fahrenheit".equals(units)) {
+                if ("fahrenheit".equals(this.units)) {
+                    temperature = this.conversionToC(sensorSignal);
+                }
+                if (temperature <= 0 && temperature <= 20) {
+                    actualState = false;
+                } else if (temperature > 20) {
+                    actualState = true;
+                }
             }
         }catch (NumberFormatException e){
-            System.out.println("The sensor state: "+ signal +" is not valid. The devices won't be activated.");
+            System.out.println("The sensor state: "+ signal +" is not valid. The devices won't be notified.");
         }finally {
             return actualState;
         }

@@ -29,7 +29,7 @@ public class Cinema extends Observable {
         }else if("off".equals(state)){
             actualState = false;
         }else{
-            System.out.println("The sensor state: "+ state +" is not valid. The devices won't be activated.");
+            System.out.println("The sensor state: "+ state +" is not valid. The devices won't be notified.");
         }
         return actualState;
     }
@@ -37,7 +37,7 @@ public class Cinema extends Observable {
     @Override
     public void setState(String state){
         this.cinemaActive = this.establishState(state);
-        System.out.println("Cinema sensor state changes to " + this.cinemaActive);
+        System.out.println("Cinema sensor state changes to " + state);
         this.notifyObservers();
     }
 

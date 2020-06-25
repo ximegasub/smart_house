@@ -7,15 +7,15 @@ public class AirConditioning implements Observer{
         this.airOn = false;
     }
 
-    public AirConditioning(Observable observable, String name){
-        this.place = name;
+    public AirConditioning(Observable observable, String place){
+        this.place = place;
         this.airOn = false;
         this.observable = observable;
         observable.activate(this);
     }
 
     @Override
-    public void definePlace(String name) {
+    public void definePlace(String place) {
         this.place = place;
     }
 

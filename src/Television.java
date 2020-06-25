@@ -7,8 +7,8 @@ public class Television implements Observer{
         this.tvOn = false;
     }
 
-    public Television(Observable observable, String name){
-        this.place = name;
+    public Television(Observable observable, String place){
+        this.place = place;
         this.tvOn = false;
         this.observable = observable;
         observable.activate(this);
@@ -36,7 +36,7 @@ public class Television implements Observer{
         }
     }
 
-    public boolean getLightOn(){
+    public boolean getTvOn(){
         return this.tvOn;
     }
 

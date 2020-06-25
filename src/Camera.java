@@ -1,26 +1,26 @@
 public class Camera implements Observer{
     private boolean cameraOn;
-    private String name;
+    private String place;
     private Observable observable;
 
     public Camera(){
         this.cameraOn = false;
     }
 
-    public Camera(Observable observable, String name){
-        this.name = name;
+    public Camera(Observable observable, String place){
+        this.place = place;
         this.cameraOn = false;
         this.observable = observable;
         observable.activate(this);
     }
 
     @Override
-    public void fillName(String name) {
-        this.name = name;
+    public void definePlace(String place) {
+        this.place = place;
     }
 
     @Override
-    public void fillObservable(Observable observable) {
+    public void defineObservable(Observable observable) {
         this.observable = observable;
         observable.activate(this);
     }
@@ -39,20 +39,20 @@ public class Camera implements Observer{
         return this.cameraOn;
     }
 
-    public String getName(){
-        return this.name;
+    public String getPlace(){
+        return this.place;
     }
 
     public void turnOnCamera(){
         if(!cameraOn){
-            System.out.println("Turning on camera from the "+ name);
+            System.out.println("Turning on camera from the "+ this.place);
             cameraOn = true;
         }
     }
 
     public void turnOffCamera(){
         if(!cameraOn){
-            System.out.println("Turning off camera from the "+ name);
+            System.out.println("Turning off camera from the "+ this.place);
             cameraOn = false;
         }
     }
