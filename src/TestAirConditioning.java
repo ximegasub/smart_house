@@ -16,23 +16,21 @@ public class TestAirConditioning {
     @Test
     public void testUpdateOn() {
         Observable temperature = new Temperature();
-        temperature.setUnits("celsius");
         temperature.setState("50");
         air.definePlace("bedroom");
         air.defineObservable(temperature);
-        air.update();
-        assertTrue(air.getAirOn());
+        temperature.setUnits("celsius");
+        assertTrue(air.getDeviceOn());
     }
 
     @Test
     public void testUpdateOff() {
         Observable temperature = new Temperature();
-        temperature.setUnits("celsius");
         temperature.setState("10");
         air.definePlace("bedroom");
         air.defineObservable(temperature);
-        air.update();
-        assertFalse(air.getAirOn());
+        temperature.setUnits("celsius");
+        assertFalse(air.getDeviceOn());
     }
 }
 

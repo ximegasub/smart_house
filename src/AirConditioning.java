@@ -1,15 +1,12 @@
-public class AirConditioning implements Observer{
-    private boolean airOn;
-    private String place;
-    private Observable observable;
+public class AirConditioning extends Device implements Observer{
 
     public AirConditioning(){
-        this.airOn = false;
+        this.deviceOn = false;
     }
 
     public AirConditioning(Observable observable, String place){
         this.place = place;
-        this.airOn = false;
+        this.deviceOn = false;
         this.observable = observable;
         observable.activate(this);
     }
@@ -29,31 +26,10 @@ public class AirConditioning implements Observer{
     public void update(){
         boolean sensorStatus = observable.getState();
         if (sensorStatus){
-            turnOnAir();
+            deviceOn("Turning on air conditioning from the "+ this.place);
         }
         else{
-            turnOffAir();
-        }
-    }
-    public boolean getAirOn(){
-        return this.airOn;
-    }
-
-    public String getPlace(){
-        return this.place;
-    }
-
-    public void turnOnAir(){
-        if(!airOn){
-            System.out.println("Turning on air conditioning from the "+ this.place);
-            airOn = true;
-        }
-    }
-
-    public void turnOffAir(){
-        if(!airOn){
-            System.out.println("Turning off air conditioning from the "+ this.place);
-            airOn = false;
+            deviceOff("Turning off air conditioning from the "+ this.place);
         }
     }
 }

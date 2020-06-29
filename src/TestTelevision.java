@@ -20,7 +20,7 @@ public class TestTelevision {
         television.definePlace("bedroom");
         television.defineObservable(cinema);
         television.update();
-        assertTrue(television.getTvOn());
+        assertTrue(television.getDeviceOn());
     }
 
     @Test
@@ -30,7 +30,7 @@ public class TestTelevision {
         television.definePlace("bedroom");
         television.defineObservable(cinema);
         television.update();
-        assertFalse(television.getTvOn());
+        assertFalse(television.getDeviceOn());
     }
 }
 

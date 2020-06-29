@@ -1,15 +1,12 @@
-public class Window implements Observer{
-    private boolean isOpen;
-    private String place;
-    private Observable observable;
+public class Window extends Device implements Observer{
 
     public Window(){
-        this.isOpen = false;
+        this.deviceOn = false;
     }
 
     public Window(Observable observable, String place){
         this.place = place;
-        this.isOpen = false;
+        this.deviceOn = false;
         this.observable = observable;
         observable.activate(this);
     }
@@ -25,7 +22,7 @@ public class Window implements Observer{
         observable.activate(this);
     }
 
-    public boolean verify_state(Observable observable){
+    public boolean verifyState(Observable observable){
         if (observable instanceof Cinema){
             boolean state = observable.getState();
             if (state){
@@ -39,34 +36,12 @@ public class Window implements Observer{
 
     @Override
     public void update(){
-        boolean sensorStatus = this.verify_state(observable);
+        boolean sensorStatus = this.verifyState(observable);
         if (sensorStatus){
-            openWindow();
+            deviceOn("Opening windows from the "+ this.place);
         }
         else{
-            closeWindow();
-        }
-    }
-
-    public boolean getIsOpen(){
-        return this.isOpen;
-    }
-
-    public String getPlace(){
-        return this.place;
-    }
-
-    public void openWindow(){
-        if(!isOpen){
-            System.out.println("Opening windows from the "+ this.place);
-            isOpen = true;
-        }
-    }
-
-    public void closeWindow(){
-        if(!isOpen){
-            System.out.println("Closing windows from the "+ this.place);
-            isOpen = false;
+            deviceOff("Closing windows from the "+ this.place);
         }
     }
 }

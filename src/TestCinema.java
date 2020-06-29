@@ -16,21 +16,21 @@ public class TestCinema {
     @Test
     public void testEstablishWrongState() {
         String state = "hola";
-        boolean actual_state = cinema.establishState(state);
+        boolean actual_state = cinema.verifyState(state);
         assertFalse(actual_state);
     }
 
     @Test
     public void testEstablishCorrectState() {
         String state = "on";
-        boolean actual_state = cinema.establishState(state);
+        boolean actual_state = cinema.verifyState(state);
         assertTrue(actual_state);
     }
 
     @Test
     public void testEstablishEmptyState() {
         String state = "";
-        boolean actual_state = cinema.establishState(state);
+        boolean actual_state = cinema.verifyState(state);
         assertFalse(actual_state);
     }
 }

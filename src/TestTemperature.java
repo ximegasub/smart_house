@@ -17,7 +17,7 @@ public class TestTemperature {
     public void testEstablishWrongState() {
         temperature.setUnits("celsius");
         String state = "hola";
-        boolean actual_state = temperature.establishState(state);
+        boolean actual_state = temperature.verifyState(state);
         assertFalse(actual_state);
     }
 
@@ -25,7 +25,7 @@ public class TestTemperature {
     public void testEstablishCorrectState() {
         temperature.setUnits("fahrenheit");
         String state = "140";
-        boolean actual_state = temperature.establishState(state);
+        boolean actual_state = temperature.verifyState(state);
         assertTrue(actual_state);
     }
 
@@ -33,7 +33,7 @@ public class TestTemperature {
     public void testEstablishEmptyState() {
         temperature.setUnits("");
         String state = "";
-        boolean actual_state = temperature.establishState(state);
+        boolean actual_state = temperature.verifyState(state);
         assertFalse(actual_state);
     }
 }

@@ -16,20 +16,18 @@ public class TestCamera {
     @Test
     public void testUpdateOn() {
         Observable movement = new Movement();
-        movement.setState("on");
         camera.definePlace("bedroom");
         camera.defineObservable(movement);
-        camera.update();
-        assertTrue(camera.getCameraOn());
+        movement.setState("on");
+        assertTrue(camera.getDeviceOn());
     }
 
     @Test
     public void testUpdateOff() {
         Observable movement = new Movement();
-        movement.setState("off");
         camera.definePlace("bedroom");
         camera.defineObservable(movement);
-        camera.update();
-        assertFalse(camera.getCameraOn());
+        movement.setState("off");
+        assertFalse(camera.getDeviceOn());
     }
 }

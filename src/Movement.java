@@ -1,15 +1,13 @@
 public class Movement extends Observable {
-    private boolean moveDetected;
-    private String units;
 
     public Movement(){
-        this.moveDetected = false;
+        this.state = false;
         this.units = null;
     }
 
     @Override
     public boolean getState(){
-        return this.moveDetected;
+        return this.state;
     }
 
     @Override
@@ -22,7 +20,8 @@ public class Movement extends Observable {
         return this.units;
     }
 
-    public boolean establishState(String state){
+    @Override
+    public boolean verifyState(String state){
         boolean actualState = false;
         if ("on".equals(state)){
             actualState = true;
@@ -36,7 +35,7 @@ public class Movement extends Observable {
 
     @Override
     public void setState(String state){
-        this.moveDetected = this.establishState(state);
+        this.state = this.verifyState(state);
         System.out.println("Movement sensor state changes to " + state);
         this.notifyObservers();
     }

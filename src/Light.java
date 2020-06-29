@@ -1,15 +1,12 @@
-public class Light implements Observer{
-    private boolean lightOn;
-    private String place;
-    private Observable observable;
+public class Light extends Device implements Observer  {
 
     public Light(){
-        this.lightOn = false;
+        this.deviceOn = false;
     }
 
     public Light(Observable observable, String place){
         this.place = place;
-        this.lightOn = false;
+        this.deviceOn = false;
         this.observable = observable;
         observable.activate(this);
     }
@@ -29,32 +26,10 @@ public class Light implements Observer{
     public void update(){
         boolean sensorStatus = observable.getState();
         if (sensorStatus){
-            turnOnLight();
+            deviceOn("Turning on lights from the "+ this.place);
         }
         else{
-            turnOffLight();
-        }
-    }
-
-    public boolean getLightOn(){
-        return this.lightOn;
-    }
-
-    public String getPlace(){
-        return this.place;
-    }
-
-    public void turnOnLight(){
-        if(!lightOn){
-            System.out.println("Turning on lights from the "+ this.place);
-            lightOn = true;
-        }
-    }
-
-    public void turnOffLight(){
-        if(!lightOn){
-            System.out.println("Turning off lights from the "+ this.place);
-            lightOn = false;
+            deviceOff("Turning off lights from the "+ this.place);
         }
     }
 }

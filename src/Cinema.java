@@ -1,15 +1,13 @@
 public class Cinema extends Observable {
-    private boolean cinemaActive;
-    private String units;
 
     public Cinema(){
-        this.cinemaActive = false;
+        this.state = false;
         this.units = null;
     }
 
     @Override
     public boolean getState(){
-        return this.cinemaActive;
+        return this.state;
     }
 
     @Override
@@ -22,7 +20,8 @@ public class Cinema extends Observable {
         return this.units;
     }
 
-    public boolean establishState(String state){
+    @Override
+    public boolean verifyState(String state){
         boolean actualState = false;
         if ("on".equals(state)){
             actualState = true;
@@ -36,7 +35,7 @@ public class Cinema extends Observable {
 
     @Override
     public void setState(String state){
-        this.cinemaActive = this.establishState(state);
+        this.state = this.verifyState(state);
         System.out.println("Cinema sensor state changes to " + state);
         this.notifyObservers();
     }

@@ -1,15 +1,12 @@
-public class Camera implements Observer{
-    private boolean cameraOn;
-    private String place;
-    private Observable observable;
+public class Camera extends Device implements Observer{
 
     public Camera(){
-        this.cameraOn = false;
+        this.deviceOn = false;
     }
 
     public Camera(Observable observable, String place){
         this.place = place;
-        this.cameraOn = false;
+        this.deviceOn = false;
         this.observable = observable;
         observable.activate(this);
     }
@@ -29,31 +26,10 @@ public class Camera implements Observer{
     public void update(){
         boolean sensorStatus = observable.getState();
         if (sensorStatus){
-            turnOnCamera();
+            deviceOn("Turning on camera from the "+ this.place);
         }
         else{
-            turnOffCamera();
-        }
-    }
-    public boolean getCameraOn(){
-        return this.cameraOn;
-    }
-
-    public String getPlace(){
-        return this.place;
-    }
-
-    public void turnOnCamera(){
-        if(!cameraOn){
-            System.out.println("Turning on camera from the "+ this.place);
-            cameraOn = true;
-        }
-    }
-
-    public void turnOffCamera(){
-        if(!cameraOn){
-            System.out.println("Turning off camera from the "+ this.place);
-            cameraOn = false;
+            deviceOff("Turning off camera from the "+ this.place);
         }
     }
 }

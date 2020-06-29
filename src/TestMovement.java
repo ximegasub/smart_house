@@ -15,21 +15,21 @@ public class TestMovement {
     @Test
     public void testEstablishWrongState() {
         String state = "hola";
-        boolean actual_state = movement.establishState(state);
+        boolean actual_state = movement.verifyState(state);
         assertFalse(actual_state);
     }
 
     @Test
     public void testEstablishCorrectState() {
         String state = "on";
-        boolean actual_state = movement.establishState(state);
+        boolean actual_state = movement.verifyState(state);
         assertTrue(actual_state);
     }
 
     @Test
     public void testEstablishEmptyState() {
         String state = "";
-        boolean actual_state = movement.establishState(state);
+        boolean actual_state = movement.verifyState(state);
         assertFalse(actual_state);
     }
 }

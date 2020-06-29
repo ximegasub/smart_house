@@ -16,21 +16,19 @@ public class TestLight {
     @Test
     public void testUpdateOn() {
         Observable movement = new Movement();
-        movement.setState("on");
         light.definePlace("bedroom");
         light.defineObservable(movement);
-        light.update();
-        assertTrue(light.getLightOn());
+        movement.setState("on");
+        assertTrue(light.getDeviceOn());
     }
 
     @Test
     public void testUpdateOff() {
         Observable movement = new Movement();
-        movement.setState("off");
         light.definePlace("bedroom");
         light.defineObservable(movement);
-        light.update();
-        assertFalse(light.getLightOn());
+        movement.setState("off");
+        assertFalse(light.getDeviceOn());
     }
 }
 

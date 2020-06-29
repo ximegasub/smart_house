@@ -1,15 +1,13 @@
 public class Temperature extends Observable {
-    private boolean temperatureSignal;
-    private String units;
 
     public Temperature(){
-        this.temperatureSignal = false;
+        this.state = false;
         this.units = null;
     }
 
     @Override
     public boolean getState(){
-        return this.temperatureSignal;
+        return this.state;
     }
 
     @Override
@@ -22,12 +20,13 @@ public class Temperature extends Observable {
         return this.units;
     }
 
-    private Integer conversionToC(Integer temperature){
+    private Integer convertToC(Integer temperature){
         int result = (temperature - 32)*5/9;
         return result;
     }
 
-    public boolean establishState(String signal){
+    @Override
+    public boolean verifyState(String signal){
         boolean actualState = false;
         try {
             int sensorSignal = Integer.parseInt(signal);
@@ -35,7 +34,7 @@ public class Temperature extends Observable {
             String units = this.units;
             if ("celsius".equals(units) || "fahrenheit".equals(units)) {
                 if ("fahrenheit".equals(this.units)) {
-                    temperature = this.conversionToC(sensorSignal);
+                    temperature = this.convertToC(sensorSignal);
                 }
                 if (temperature <= 0 && temperature <= 20) {
                     actualState = false;
@@ -52,7 +51,7 @@ public class Temperature extends Observable {
 
     @Override
     public void setState(String signal){
-        this.temperatureSignal = this.establishState(signal);
+        this.state = this.verifyState(signal);
         System.out.println("Temperature Sensor state changes to " + signal + " (" + this.units + ")");
         this.notifyObservers();
     }

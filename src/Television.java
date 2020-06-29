@@ -1,15 +1,12 @@
-public class Television implements Observer{
-    private boolean tvOn;
-    private String place;
-    private Observable observable;
+public class Television extends Device implements Observer{
 
     public Television(){
-        this.tvOn = false;
+        this.deviceOn = false;
     }
 
     public Television(Observable observable, String place){
         this.place = place;
-        this.tvOn = false;
+        this.deviceOn = false;
         this.observable = observable;
         observable.activate(this);
     }
@@ -29,32 +26,10 @@ public class Television implements Observer{
     public void update(){
         boolean sensorStatus = observable.getState();
         if (sensorStatus){
-            turnOnTv();
+            deviceOn("Turning on television from the "+ this.place);
         }
         else{
-            turnOffTv();
-        }
-    }
-
-    public boolean getTvOn(){
-        return this.tvOn;
-    }
-
-    public String getPlace(){
-        return this.place;
-    }
-
-    public void turnOnTv(){
-        if(!tvOn){
-            System.out.println("Turning on television from the "+ this.place);
-            tvOn = true;
-        }
-    }
-
-    public void turnOffTv(){
-        if(!tvOn){
-            System.out.println("Turning off television from the "+ this.place);
-            tvOn = false;
+            deviceOff("Turning off television from the "+ this.place);
         }
     }
 }

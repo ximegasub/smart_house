@@ -16,42 +16,38 @@ public class TestWindow {
     @Test
     public void testUpdateTemperatureOn() {
         Observable temperature = new Temperature();
-        temperature.setUnits("celsius");
-        temperature.setState("50");
         window.definePlace("bedroom");
         window.defineObservable(temperature);
-        window.update();
-        assertTrue(window.getIsOpen());
+        temperature.setState("50");
+        temperature.setUnits("celsius");
+        assertTrue(window.getDeviceOn());
     }
 
     @Test
     public void testUpdateCinemaOn() {
         Observable cinema = new Cinema();
-        cinema.setState("on");
         window.definePlace("bedroom");
         window.defineObservable(cinema);
-        window.update();
-        assertFalse(window.getIsOpen());
+        cinema.setState("on");
+        assertFalse(window.getDeviceOn());
     }
 
     @Test
     public void testUpdateTemperatureOff() {
         Observable temperature = new Temperature();
-        temperature.setUnits("celsius");
-        temperature.setState("10");
         window.definePlace("bedroom");
         window.defineObservable(temperature);
-        window.update();
-        assertFalse(window.getIsOpen());
+        temperature.setUnits("celsius");
+        temperature.setState("10");
+        assertFalse(window.getDeviceOn());
     }
 
     @Test
     public void testUpdateCinemaOff() {
         Observable cinema = new Cinema();
-        cinema.setState("off");
         window.definePlace("bedroom");
         window.defineObservable(cinema);
-        window.update();
-        assertTrue(window.getIsOpen());
+        cinema.setState("off");
+        assertTrue(window.getDeviceOn());
     }
 }
