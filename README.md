@@ -2,12 +2,11 @@
 This is the final project for TechGroup
 
 Requirements:
+The smart home is made up of electronic devices and sensors, where the home devices react according to the signals sent by the sensors.
 
-La casa inteligente esta compuesta de dispositivos electrónicos y sensores, donde los dispositivos de la vivienda reaccionan de acuerdo a las señales enviadas por los sensores.
+The following points are required:
 
-Se requiere contar con los siguientes puntos:
-
-- La app se carga desde un archivo de configuración donde estará la información de los dispositivos y sensores. 
-- Cualquier cambio en este archivo será reflejado en la app, por ejemplo: 
-      - Cambiar el estado de un sensor para que notifique a sus dispositivos subscritos. 
-- Los dispositivos pueden ser desactivados para evitar recibir notificaciones.
+- The app is loaded from a configuration file where the information of the devices and sensors will be.
+- Any change in this file will be reflected in the app, for example:
+      - Change the status of a sensor to notify its subscribed devices.
+- Devices can be disabled to avoid receiving notifications.
